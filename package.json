@@ -9,7 +9,7 @@
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
     "prepare": "husky install",
-    "test": "echo \"Commit no válido, sigue la estructura\" && exit 0"
+    "test": ""
   },
   "dependencies": {
     "@alebat/default-alebat-config": "^0.8.0",
