@@ -1,3 +1,3 @@
-import { commitLintFront } from '@alebat/default-alebat-config';
+import { commitLintFront } from '@alebat/default-alebat-config'
 
-export default commitLintFront;
+export default commitLintFront
