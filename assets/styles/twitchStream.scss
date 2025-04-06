@@ -1,0 +1,163 @@
+.stream-grid {
+  width: 100%;
+  
+  &__container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+    margin-bottom: 16px;
+  }
+  
+  &__more {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+    
+    &-button {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background-color: #18181b;
+      color: #efeff1;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background-color 0.2s;
+      
+      &:hover {
+        background-color: #1f1f23;
+      }
+    }
+  }
+}
+
+.stream-card {
+  background-color: #18181b;
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.2s;
+  
+  &:hover {
+    transform: translateY(-5px);
+    
+    .stream-card__thumbnail {
+      transform: scale(1.05);
+    }
+  }
+  
+  &__thumbnail-container {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%; /* 16:9 Aspect Ratio */
+    overflow: hidden;
+  }
+  
+  &__thumbnail {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+  
+  &__overlay {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    right: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  &__live-badge {
+    background-color: #e91916;
+    color: white;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 600;
+  }
+  
+  &__viewers {
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 12px;
+  }
+  
+  &__info {
+    padding: 12px;
+  }
+  
+  &__streamer-info {
+    display: flex;
+    gap: 12px;
+  }
+  
+  &__avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  
+  &__details {
+    flex: 1;
+    min-width: 0;
+  }
+  
+  &__title {
+    color: #efeff1;
+    font-size: 14px;
+    font-weight: 600;
+    margin: 0 0 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  &__streamer {
+    color: #a970ff;
+    font-size: 13px;
+    margin: 0 0 2px;
+  }
+  
+  &__game {
+    color: #adadb8;
+    font-size: 13px;
+    margin: 0 0 4px;
+  }
+  
+  &__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+  
+  &__tag {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #adadb8;
+    font-size: 12px;
+    padding: 2px 8px;
+    border-radius: 12px;
+  }
+}
+
+@media (max-width: 768px) {
+  .stream-grid__container {
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  }
+}
+
+@media (max-width: 480px) {
+  .stream-grid__container {
+    grid-template-columns: 1fr;
+  }
+}
