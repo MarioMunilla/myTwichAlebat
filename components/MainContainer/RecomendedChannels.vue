@@ -3,49 +3,9 @@
     <h2 class="recommended-channels__title">RECOMMENDED CHANNELS</h2>
     <ul class="recommended-channels__list">
       <li class="channel-item">
-        <!--   <img
-            src="~/assets/avatar1.jpg"
-            alt="Channel Avatar"
-            class="channel-item__avatar"
-          /> -->
-        <div class="channel-item__info">
-          <span class="channel-item__name">midudev</span>
-          <span class="channel-item__game">Just Chatting</span>
-          <span class="channel-item__name">midudev</span>
-          <span class="channel-item__game">Just Chatting</span>
-          <span class="channel-item__name">midudev</span>
-          <span class="channel-item__game">Just Chatting</span>
-          <span class="channel-item__name">midudev</span>
-          <span class="channel-item__game">Just Chatting</span>
-          <span class="channel-item__name">midudev</span>
-          <span class="channel-item__game">Just Chatting</span>
-          <span class="channel-item__name">midudev</span>
-          <span class="channel-item__game">Just Chatting</span>
-          <span class="channel-item__name">midudev</span>
-          <span class="channel-item__game">Just Chatting</span>
-          <span class="channel-item__name">midudev</span>
-          <span class="channel-item__game">Just Chatting</span>
-          <span class="channel-item__name">midudev</span>
-          <span class="channel-item__game">Just Chatting</span>
-          <span class="channel-item__name">midudev</span>
-          <span class="channel-item__game">Just Chatting</span>
-          <span class="channel-item__name">midudev</span>
-          <span class="channel-item__game">Just Chatting</span>
-          <span class="channel-item__name">midudev</span>
-          <span class="channel-item__game">Just Chatting</span>
-          <span class="channel-item__name">midudev</span>
-          <span class="channel-item__game">Just Chatting</span>
-          <span class="channel-item__name">midudev</span>
-          <span class="channel-item__game">Just Chatting</span>
-          <span class="channel-item__name">midudev</span>
-          <span class="channel-item__game">Just Chatting</span>
-          <span class="channel-item__name">midudev</span>
-          <span class="channel-item__game">Just Chatting</span>
-          <span class="channel-item__name">midudev</span>
-        </div>
         <div class="channel-item__viewers">
           <span class="channel-item__dot channel-item__dot--online"></span>
-          <span class="channel-item__count">7.2k</span>
+          <span class="channel-item__count"></span>
         </div>
       </li>
     </ul>

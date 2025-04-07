@@ -1,43 +1,31 @@
-export default defineEventHandler(async () => {
-  const config = useRuntimeConfig()
+export async function getTwitchToken() {
+  const clientId = process.env.TWITCH_CLIENT_ID!
+  const clientSecret = process.env.TWITCH_CLIENT_SECRET!
+  const authUrl = 'https://id.twitch.tv/oauth2/token'
 
-  const clientId = config.public.twitchClientId
-  const clientSecret = config.twitchClientSecret
-
-  if (!clientId || !clientSecret) {
-    throw createError({
-      statusCode: 400,
-      message: 'Twitch credentials not configured',
-    })
-  }
+  const params = new URLSearchParams({
+    client_id: clientId || '',
+    client_secret: clientSecret || '',
+    grant_type: 'client_credentials',
+  })
 
   try {
-    const response = await fetch('https://id.twitch.tv/oauth2/token', {
+    const response = await fetch(`${authUrl}?${params}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
       },
-      body: new URLSearchParams({
-        client_id: clientId,
-        client_secret: clientSecret,
-        grant_type: 'client_credentials',
-      }),
     })
 
     if (!response.ok) {
-      const error = await response.text()
-      throw new Error(`Twitch API error: ${error}`)
+      throw new Error(`Error ${response.status}: ${await response.text()}`)
     }
 
-    const { access_token, expires_in } = await response.json()
-    return {
-      token: access_token,
-      expiresIn: expires_in,
-    }
+    const data = await response.json()
+    console.log('Data:', data)
+    return data.access_token
   } catch (error) {
-    throw createError({
-      statusCode: 500,
-      message: 'Failed to fetch Twitch token: ' + error,
-    })
+    console.error('Error fetching Twitch token:', error)
+    throw error
   }
-})
+}
