@@ -1,4 +1,4 @@
-export async function getTwitchToken() {
+export async function TwitchToken() {
   const config = useRuntimeConfig()
   const clientId = config.public.twitchClientId
   const clientSecret = config.twitchClientSecret
