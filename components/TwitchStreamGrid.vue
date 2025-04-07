@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { PropType } from 'vue'
 import '~/assets/styles/twitchStream.scss'
-import type { TwitchStream } from '~/composables/useTwitchStreams'
+import type { TwitchStream } from '~/types/twitchStream'
 
 defineProps({
   streams: {
@@ -27,7 +27,9 @@ defineProps({
           />
           <div class="stream-card__overlay">
             <span class="stream-card__live-badge">DIRECTO</span>
-            <span class="stream-card__viewers">{{ stream.view_count }} espectadores</span>
+            <span class="stream-card__viewers"
+              >{{ stream.viewer_count }} espectadores</span
+            >
           </div>
         </div>
         <div class="stream-card__info">
