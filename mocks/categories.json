@@ -1,0 +1,39 @@
+{
+  "categories": [
+    {
+      "name": "Just Chatting",
+      "viewers": "23K",
+      "type": "Gaming"
+    },
+    {
+      "name": "Software and Game Dev...",   
+      "viewers": "35K",
+      "type": "Games"
+    },
+    {
+      "name": "Farming Simulator",
+      "viewers": "385K",
+      "type": "Simulation"
+    },
+    {
+      "name": "S.T.A.L.K.E.R. 2 Heart of...",
+      "viewers": "1K",
+      "type": "Gaming"
+    },
+    {
+      "name": "Just Chatting",
+      "viewers": "23K",
+      "type": "Gaming"
+    },
+    {
+      "name": "Flight Simulator 2024",
+      "viewers": "",
+      "type": "Simulation"
+    },
+    {
+      "name": "Flight Simulator",
+      "viewers": "12K",
+      "type": "Simulation"
+    }
+  ]
+}
