@@ -1,18 +1,7 @@
 <script setup lang="ts">
 import type { PropType } from 'vue'
 import '~/assets/styles/twitchStream.scss'
-
-interface TwitchStream {
-  user_name: string
-  title?: string
-  thumbnail_url?: string
-  viewer_count: number
-  profile_image_url?: string
-  game_name?: string
-  language?: string
-  is_mature?: boolean
-  tags?: string[]
-}
+import type { TwitchStream } from '~/composables/useTwitchStreams'
 
 defineProps({
   streams: {
@@ -38,9 +27,7 @@ defineProps({
           />
           <div class="stream-card__overlay">
             <span class="stream-card__live-badge">DIRECTO</span>
-            <span class="stream-card__viewers"
-              >{{ stream.viewer_count }} espectadores</span
-            >
+            <span class="stream-card__viewers">{{ stream.view_count }} espectadores</span>
           </div>
         </div>
         <div class="stream-card__info">

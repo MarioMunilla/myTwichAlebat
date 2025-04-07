@@ -2,9 +2,14 @@
 import TwitchStreamGrid from '~/components/TwitchStreamGrid.vue'
 import MainContainer from '~/components/MainContainer/MainContainer.vue'
 import RecommendedChannels from '~/components/MainContainer/RecomendedChannels.vue'
-import { useTwitchStreams } from '~/composables/useTwitchStreams'
+import { useTwitchStreams } from '@/composables/useTwitchStreams'
 
-const { streams } = useTwitchStreams()
+const { streams, loading, error } = useTwitchStreams()
+
+// Llamar a fetchStreams cuando el componente se monte
+/* onMounted(async () => {
+  await fetchStreams('TU_CLIENT_ID', 'TU_ACCESS_TOKEN')
+}) */
 </script>
 
 <template>
@@ -14,7 +19,9 @@ const { streams } = useTwitchStreams()
         <RecommendedChannels />
       </div>
       <div class="content-layout__main">
-        <TwitchStreamGrid :streams="streams" />
+        <div v-if="loading">Cargando streams...</div>
+        <div v-else-if="error">{{ error }}</div>
+        <TwitchStreamGrid v-else :streams="streams" />
       </div>
     </div>
   </MainContainer>
