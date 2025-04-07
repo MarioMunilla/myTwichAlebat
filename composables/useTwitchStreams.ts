@@ -1,5 +1,5 @@
 import { computed } from 'vue'
-/* import type { TwitchStream } from '~/types/streams' */
+import type { TwitchStream } from '~/types/twitchStream'
 
 export function useTwitchStreams() {
   const {
