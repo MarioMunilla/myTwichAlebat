@@ -21,23 +21,23 @@ section {
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  padding: 20px;
+  padding: 2rem;
   background-color: #f9f9f9;
 }
 header,
 main,
 footer {
   width: 100%;
-  max-width: 400px;
+  max-width: 25rem;
   margin: 0 auto;
 }
 h1 {
   font-size: 2rem;
-  margin-bottom: 20px;
+  margin-bottom: 1.25rem;
   text-align: center;
 }
 footer {
-  margin-top: 40px;
+  margin-top: 2.5rem;
   font-size: 0.875rem;
   color: #666;
 }
