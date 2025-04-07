@@ -16,7 +16,7 @@ import MainContainerHeader from './MainContainerHeader.vue'
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background-color: #f4f4f4;
+  background-color: hsl(0, 0%, 0%);
 }
 
 .main-content {

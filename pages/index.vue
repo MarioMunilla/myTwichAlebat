@@ -1,9 +1,7 @@
 <script setup lang="ts">
 import TwitchStreamGrid from '~/components/TwitchStreamGrid.vue'
-import MainContainer from '~/components/MainContainer/MainContainer.vue'
-import RecommendedChannels from '~/components/MainContainer/RecomendedChannels.vue'
 import { useTwitchStreams } from '~/composables/useTwitchStreams'
-
+import RecommendedChannels from '~/components/MainContainer/RecomendedChannels.vue'
 const { streams } = useTwitchStreams()
 </script>
 

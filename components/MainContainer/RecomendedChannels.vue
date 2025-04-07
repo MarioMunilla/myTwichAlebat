@@ -1,134 +1,197 @@
+<script setup lang="ts">
+import { computed } from 'vue'
+
+export interface RecommendedChannel {
+  id: string
+  user_id: string
+  user_login: string
+  user_name: string
+  title: string
+  viewer_count: number
+  thumbnail_url: string
+  profile_image_url: string
+  game_name: string
+  language: string
+}
+
+const { data, pending, error } = await useAsyncData('recommended-channels', () =>
+  $fetch('/api/recommended-channels'),
+)
+
+const channels = computed(
+  () =>
+    data.value?.data.map((channel: { thumbnail_url: string }) => ({
+      ...channel,
+      formattedThumbnail: channel.thumbnail_url
+        .replace('{width}', '450')
+        .replace('{height}', '220'),
+    })) ?? [],
+)
+</script>
+
 <template>
-  <section class="recommended-channels">
-    <h2 class="recommended-channels__title">RECOMMENDED CHANNELS</h2>
-    <ul class="recommended-channels__list">
-      <li class="channel-item">
-        <!--   <img
-            src="~/assets/avatar1.jpg"
-            alt="Channel Avatar"
-            class="channel-item__avatar"
-          /> -->
-        <div class="channel-item__info">
-          <span class="channel-item__name">midudev</span>
-          <span class="channel-item__game">Just Chatting</span>
-          <span class="channel-item__name">midudev</span>
-          <span class="channel-item__game">Just Chatting</span>
-          <span class="channel-item__name">midudev</span>
-          <span class="channel-item__game">Just Chatting</span>
-          <span class="channel-item__name">midudev</span>
-          <span class="channel-item__game">Just Chatting</span>
-          <span class="channel-item__name">midudev</span>
-          <span class="channel-item__game">Just Chatting</span>
-          <span class="channel-item__name">midudev</span>
-          <span class="channel-item__game">Just Chatting</span>
-          <span class="channel-item__name">midudev</span>
-          <span class="channel-item__game">Just Chatting</span>
-          <span class="channel-item__name">midudev</span>
-          <span class="channel-item__game">Just Chatting</span>
-          <span class="channel-item__name">midudev</span>
-          <span class="channel-item__game">Just Chatting</span>
-          <span class="channel-item__name">midudev</span>
-          <span class="channel-item__game">Just Chatting</span>
-          <span class="channel-item__name">midudev</span>
-          <span class="channel-item__game">Just Chatting</span>
-          <span class="channel-item__name">midudev</span>
-          <span class="channel-item__game">Just Chatting</span>
-          <span class="channel-item__name">midudev</span>
-          <span class="channel-item__game">Just Chatting</span>
-          <span class="channel-item__name">midudev</span>
-          <span class="channel-item__game">Just Chatting</span>
-          <span class="channel-item__name">midudev</span>
-          <span class="channel-item__game">Just Chatting</span>
-          <span class="channel-item__name">midudev</span>
-          <span class="channel-item__game">Just Chatting</span>
-          <span class="channel-item__name">midudev</span>
+  <nav class="nav">
+    <header class="nav__header">
+      <h1>RECOMMENDED CHANNELS</h1>
+    </header>
+    <section class="channels__list">
+      <div v-if="pending" class="loading">Cargando canales...</div>
+      <div v-else-if="error" class="error">Error al cargar canales</div>
+      <article
+        v-else
+        v-for="channel in channels"
+        :key="channel.user_name"
+        class="channel__card"
+      >
+        <!-- Miniatura del stream -->
+        <!--      <div class="channel__thumbnail">
+          <img
+            :src="channel.formattedThumbnail"
+            :alt="channel.title"
+            class="channel__thumbnail--img"
+          />
+        </div> -->
+
+        <!-- Info del canal -->
+        <div class="channel__info">
+          <div class="channel__avatar">
+            <img
+              :src="channel.formattedThumbnail"
+              :alt="channel.user_name"
+              class="channel__avatar--img"
+            />
+          </div>
+          <div class="channel__details">
+            <span class="channel__details--username">{{ channel.user_name }}</span>
+            <span class="channel__details--game">{{ channel.game_name }}</span>
+          </div>
         </div>
-        <div class="channel-item__viewers">
-          <span class="channel-item__dot channel-item__dot--online"></span>
-          <span class="channel-item__count">7.2k</span>
+
+        <div class="channel__viewers">
+          <span class="channel__viewers--live-indicator">🔴</span>
+          <span>{{ channel.viewer_count }}</span>
         </div>
-      </li>
-    </ul>
-  </section>
+      </article>
+    </section>
+  </nav>
 </template>
 
-<style lang="scss" scoped>
-.recommended-channels {
-  background-color: #18181b;
-  width: 15rem;
-  height: calc(100vh - 3.6em);
-  &__title {
-    color: #efeff1;
-    font-size: 14px;
-    font-weight: 600;
-    margin-bottom: 16px;
+<style scoped lang="scss">
+.nav {
+  height: 80vh;
+  width: 17vw;
+  min-width: 250px;
+  background-color: #1f1f23;
+  color: white;
+  padding: 0.8em;
+  overflow-y: auto;
+
+  &__header {
+    padding: 0.5em 0;
+    margin-bottom: 1em;
+
+    h1 {
+      font-size: 0.9em;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
   }
 
-  &__list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+  @media (max-width: 1240px) {
+    display: none;
   }
 }
 
-.channel-item {
+.channels__list {
   display: flex;
-  align-items: center;
-  padding: 6px 0;
-  cursor: pointer;
-  transition: background-color 0.2s;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.channel__card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+  background-color: #26262c;
+  border-radius: 6px;
+  overflow: hidden;
+  transition: transform 0.2s;
 
   &:hover {
-    background-color: rgba(255, 255, 255, 0.1);
+    transform: scale(1.02);
   }
+}
 
-  &__avatar {
-    width: 30px;
-    height: 30px;
+.channel__thumbnail--img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  display: block;
+}
+
+.channel__info {
+  display: flex;
+  align-items: center;
+  padding: 0.5em;
+  gap: 0.5em;
+}
+
+.channel__avatar {
+  width: 2.5em;
+  height: 2.5em;
+  border-radius: 50%;
+  overflow: hidden;
+
+  &--img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
     border-radius: 50%;
-    margin-right: 10px;
+  }
+}
+
+.channel__details {
+  display: flex;
+  flex-direction: column;
+
+  &--username {
+    font-weight: bold;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
   }
 
-  &__info {
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-  }
-
-  &__name {
-    color: #efeff1;
-    font-size: 14px;
-    font-weight: 500;
-  }
-
-  &__game {
+  &--game {
+    font-size: 0.8em;
     color: #adadb8;
-    font-size: 13px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
   }
+}
 
-  &__viewers {
-    display: flex;
-    align-items: center;
-    gap: 5px;
+.channel__viewers {
+  padding: 0 0.5em 0.5em;
+  font-size: 0.8em;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 0.3em;
+
+  &--live-indicator {
+    color: red;
+    font-size: 0.6em;
   }
+}
 
-  &__dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
+.loading,
+.error {
+  padding: 1em;
+  text-align: center;
+  color: #adadb8;
+}
 
-    &--online {
-      background-color: #eb0400;
-    }
-
-    &--offline {
-      background-color: #adadb8;
-    }
-  }
-
-  &__count {
-    color: #adadb8;
-    font-size: 13px;
-  }
+.error {
+  color: #ff4444;
 }
 </style>

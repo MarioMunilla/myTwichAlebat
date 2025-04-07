@@ -1,18 +1,7 @@
 <script setup lang="ts">
 import type { PropType } from 'vue'
 import '~/assets/styles/twitchStream.scss'
-
-interface TwitchStream {
-  user_name: string
-  title?: string
-  thumbnail_url?: string
-  viewer_count: number
-  profile_image_url?: string
-  game_name?: string
-  language?: string
-  is_mature?: boolean
-  tags?: string[]
-}
+import type { TwitchStream } from '~/types/twitchStream'
 
 defineProps({
   streams: {
