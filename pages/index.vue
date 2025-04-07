@@ -2,7 +2,10 @@
 import TwitchStreamGrid from '~/components/TwitchStreamGrid.vue'
 import { useTwitchStreams } from '~/composables/useTwitchStreams'
 import RecommendedChannels from '~/components/MainContainer/RecomendedChannels.vue'
+import { useTwitchGames } from '~/composables/useTwitchGames'
+
 const { streams } = useTwitchStreams()
+const { games } = useTwitchGames()
 </script>
 
 <template>
@@ -13,6 +16,7 @@ const { streams } = useTwitchStreams()
       </div>
       <div class="content-layout__main">
         <TwitchStreamGrid :streams="streams" />
+        <TwitchTopGames :games="games" />
       </div>
     </div>
   </MainContainer>
@@ -33,6 +37,15 @@ const { streams } = useTwitchStreams()
   &__main {
     flex: 1;
     min-width: 0; // Evita que el contenido se desborde
+
+    // Añade espacio entre los componentes
+    & > * {
+      margin-bottom: 24px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
   }
 
   @media (max-width: 992px) {
