@@ -14,7 +14,12 @@ defineProps({
 <template>
   <div class="stream-grid">
     <div class="stream-grid__container">
-      <div v-for="stream in streams" :key="stream.user_name" class="stream-card">
+      <NuxtLink
+        v-for="stream in streams"
+        :key="stream.user_name"
+        :to="`/live/${stream.user_name}`"
+        class="stream-card"
+      >
         <div class="stream-card__thumbnail-container">
           <img
             :src="
@@ -27,9 +32,9 @@ defineProps({
           />
           <div class="stream-card__overlay">
             <span class="stream-card__live-badge">DIRECTO</span>
-            <span class="stream-card__viewers"
-              >{{ stream.viewer_count }} espectadores</span
-            >
+            <span class="stream-card__viewers">
+              {{ stream.viewer_count }} espectadores
+            </span>
           </div>
         </div>
         <div class="stream-card__info">
@@ -52,7 +57,7 @@ defineProps({
             </div>
           </div>
         </div>
-      </div>
+      </NuxtLink>
     </div>
     <div class="stream-grid__more">
       <button class="stream-grid__more-button">
