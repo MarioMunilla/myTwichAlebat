@@ -17,7 +17,6 @@ defineProps({
   </div>
 
   <div class="game-grid">
-    <!-- Contenido de la grilla de juegos (sin cambios) -->
     <div class="game-grid__container">
       <div v-for="game in games" :key="game.id" class="game-card">
         <button class="game-card__button">
