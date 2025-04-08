@@ -7,7 +7,7 @@ export default defineEventHandler(async () => {
   try {
     const token = await getTwitchToken()
 
-    const response = await fetch('https://api.twitch.tv/helix/games/top', {
+    const response = await fetch('https://api.twitch.tv/helix/games/top?first=6', {
       headers: {
         Authorization: `Bearer ${token}`,
         'Client-Id': config.public.twitchClientId,
