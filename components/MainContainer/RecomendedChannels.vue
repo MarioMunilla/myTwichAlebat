@@ -31,24 +31,26 @@ const channels = computed(
         :key="channel.user_name"
         class="channel__card"
       >
-        <div class="channel__info">
-          <div class="channel__avatar">
-            <img
-              :src="channel.formattedThumbnail"
-              :alt="channel.user_name"
-              class="channel__avatar--img"
-            />
+        <NuxtLink :to="`/live/${channel.user_name}`">
+          <div class="channel__info">
+            <div class="channel__avatar">
+              <img
+                :src="channel.formattedThumbnail"
+                :alt="channel.user_name"
+                class="channel__avatar--img"
+              />
+            </div>
+            <div class="channel__details">
+              <span class="channel__details--username">{{ channel.user_name }}</span>
+              <span class="channel__details--game">{{ channel.game_name }}</span>
+            </div>
           </div>
-          <div class="channel__details">
-            <span class="channel__details--username">{{ channel.user_name }}</span>
-            <span class="channel__details--game">{{ channel.game_name }}</span>
-          </div>
-        </div>
 
-        <div class="channel__viewers">
-          <span class="channel__viewers--live-indicator">🔴</span>
-          <span>{{ channel.viewer_count }}</span>
-        </div>
+          <div class="channel__viewers">
+            <span class="channel__viewers--live-indicator">🔴</span>
+            <span>{{ channel.viewer_count }}</span>
+          </div>
+        </NuxtLink>
       </article>
     </section>
   </nav>
