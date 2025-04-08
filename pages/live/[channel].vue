@@ -12,7 +12,7 @@ const channel = route.params.channel as string
       <div class="live-page__container">
         <iframe
           class="live-page__iframe"
-          :src="`https://player.twitch.tv/?channel=${channel}&parent=localhost&darkpopout`"
+          :src="`https://player.twitch.tv/?channel=${channel}&darkpopout`"
           frameborder="0"
           allowfullscreen
           scrolling="no"
