@@ -12,7 +12,12 @@ defineProps({
 </script>
 
 <template>
+  <div class="categories-message">
+    <span class="categories-title">Categories</span> we think you'll like
+  </div>
+
   <div class="game-grid">
+    <!-- Contenido de la grilla de juegos (sin cambios) -->
     <div class="game-grid__container">
       <div v-for="game in games" :key="game.id" class="game-card">
         <button class="game-card__button">
@@ -31,43 +36,20 @@ defineProps({
         </button>
       </div>
     </div>
-    <div class="game-grid__header">
-      <button class="header-item">
-        Games
-        <img src="~/assets/game.svg" alt="Elipsis" class="header__elipsis" />
-      </button>
-      <button class="header-item">
-        IRL
-        <img src="~/assets/microphone.svg" alt="Elipsis" class="header__elipsis" />
-      </button>
-      <button class="header-item">
-        MUSIC & DJS
-        <img src="~/assets/music.svg" alt="Elipsis" class="header__elipsis" />
-      </button>
-      <button class="header-item">
-        Creative
-        <img src="~/assets/creative.svg" alt="Elipsis" class="header__elipsis" />
-      </button>
-      <button class="header-item">
-        ESports
-        <img src="~/assets/creative.svg" alt="Elipsis" class="header__elipsis" />
-      </button>
-    </div>
-    <div class="game-grid__more">
-      <button class="game-grid__more-button">
-        Mostrar más
-        <svg
-          width="16"
-          height="16"
-          viewBox="0 0 16 16"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path d="M8 11L3 6h10l-5 5z" fill="currentColor" />
-        </svg>
-      </button>
-    </div>
   </div>
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.categories-message {
+  text-align: center;
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  color: white;
+}
+
+.categories-title {
+  color: #0000ff;
+  font-weight: bold;
+  margin-right: 0.5rem;
+}
+</style>
