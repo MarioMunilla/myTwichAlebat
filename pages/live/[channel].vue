@@ -12,14 +12,14 @@ const channel = route.params.channel as string
       <div class="live-page__container">
         <iframe
           class="live-page__iframe"
-          :src="`https://player.twitch.tv/channel=${channel}?parent=https://my-twich-alebat.vercel.app/&darkpopout`"
+          :src="`https://player.twitch.tv/?channel=${channel}&parent=my-twich-alebat.vercel.app&darkpopout`"
           frameborder="0"
           allowfullscreen
           scrolling="no"
         />
         <iframe
           class="live-page__chat"
-          :src="`https://www.twitch.tv/embed/${channel}/chat?parent=https://my-twich-alebat.vercel.app/&darkpopout`"
+          :src="`https://www.twitch.tv/embed/${channel}/chat?parent=my-twich-alebat.vercel.app&darkpopout`"
           frameborder="0"
           scrolling="yes"
         />
