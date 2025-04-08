@@ -1,11 +1,19 @@
-<script></script>
 <template>
   <header class="header">
     <nav class="header__nav" aria-label="Main Navigation">
       <ul class="header__list">
         <li class="header__item header__left">
-          <img src="~/assets/miduTech.svg" alt="Logo" class="header__logo" />MIDUTCH
-          <img src="~/assets/verticalElipsis.svg" alt="Elipsis" class="header__elipsis" />
+          <NuxtLink to="/">
+            <img src="~/assets/miduTech.svg" alt="Logo" class="header__logo" />
+          </NuxtLink>
+          <NuxtLink to="/" class="header__brand">MIDUTCH</NuxtLink>
+          <NuxtLink to="/">
+            <img
+              src="~/assets/verticalElipsis.svg"
+              alt="Elipsis"
+              class="header__elipsis"
+            />
+          </NuxtLink>
         </li>
 
         <li class="header__item search">
@@ -18,10 +26,10 @@
         <li class="header__item header__right">
           <img src="~/assets/crown.svg" alt="Corona" class="header__icon" />
           <button class="header__button">
-            <NuxtLink class="header__link" to="/login">Login </NuxtLink>
+            <NuxtLink class="header__link" to="/login">Login</NuxtLink>
           </button>
           <button class="header__button header__button--signup">
-            <NuxtLink class="header__link" to="/signup">Sign up </NuxtLink>
+            <NuxtLink class="header__link" to="/signup">Sign up</NuxtLink>
           </button>
           <img src="~/assets/profile.svg" alt="Profile" class="header__icon" />
         </li>
@@ -112,6 +120,14 @@
       }
     }
   }
+
+  &__brand {
+    color: $header-text-color;
+    margin: 0 10px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.2rem;
+  }
 }
 
 .search {
@@ -122,6 +138,7 @@
   border-radius: $search-border-radius;
   padding: 5px;
   width: 100%;
+
   &__input {
     border: none;
     background: none;

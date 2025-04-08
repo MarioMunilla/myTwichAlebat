@@ -12,6 +12,7 @@ defineProps({
 </script>
 
 <template>
+  <span></span>
   <div class="stream-grid">
     <div class="stream-grid__container">
       <NuxtLink
